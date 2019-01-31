@@ -9,9 +9,12 @@ Template.hello.onCreated(function helloOnCreated() {
 });
 
 Template.hello.helpers({
-  counter() {
+  counter2() {
     return Template.instance().counter.get();
-  },
+},
+counter1(){
+	return Template.instance().counter.get();
+}
 });
 
 Template.hello.events({

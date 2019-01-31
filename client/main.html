@@ -3,15 +3,34 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <template>Socialbook</template>
+  <div class="container"> </div>
+    <div class="row justify content"> </div>
+      <div class="col-6"> </div>
+  <img src="garden.jpg.1200x800_q85_crop.jpg" alt="">
+
+  <h1>The Garden!</h1>
 
   {{> hello}}
   {{> info}}
 </body>
-
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+  <div class="row justify-content-around">
+    <div class="col">
+      <button class="btn btn-primary">Like</button>
+    </div>
+     <div class="col">
+      <button type="button" class="btn btn-light">or</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-danger">Dislike</button>
+    </div>
+  </div>
+   
+   
+ 
+  <p> {{counter2}} Like</p>
+  <p> {{counter1}} Dislikes</p>
 </template>
 
 <template name="info">
