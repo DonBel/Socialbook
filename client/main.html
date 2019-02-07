@@ -3,23 +3,33 @@
 </head>
 
 <body>
-  <template>Socialbook</template>
-  <div class="container"> </div>
-    <div class="row justify content"> </div>
-      <div class="col-6"> </div>
-  <img src="garden.jpg.1200x800_q85_crop.jpg" alt="">
-
-  <h1>The Garden!</h1>
-
-  {{> hello}}
-  {{> info}}
+  
+  <div class="container"> 
+    <div class="row justify-content-around"> 
+      <div class="col-6">
+        <h1 class="display-1">Socialbook</h1> 
+      </div>
+    </div>
+     
+  
+  {{> addProfile}}
+  {{> profile}}
+</div>
 </body>
-<template name="hello">
+
+<template name="profile">
   <div class="row justify-content-around">
+    <div class="col-6">
+       <img src="garden.jpg.1200x800_q85_crop.jpg" alt="">
+       <h1>The Garden!</h1>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col">
       <button class="btn btn-primary">Like</button>
     </div>
-     <div class="col">
+    <div class="col">
       <button type="button" class="btn btn-light">or</button>
     </div>
     <div class="col">
@@ -33,12 +43,50 @@
   <p> {{counter1}} Dislikes</p>
 </template>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+
+<template name="addProfile">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">First Name</span>
+          </div>
+          <input type="text" name="FirstName" aria-label="First Name" placeholder="" class="form-control">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Last Name</span>
+          </div>
+          <input type="text" name="LastName" aria-label="Last Name" placeholder="" class="form-control">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Image</span>
+          </div>
+          <input type="text" name="Image" aria-label="Image" placeholder="" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-savebtn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </template>
