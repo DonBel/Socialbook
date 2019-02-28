@@ -18,14 +18,31 @@ Template.profile.events({
 		console.log ("You clicked dislike");
 },
 	'click .js-info'(event, instance) {
-		var modalname = '#viewModal' + this._id
-		$(modalname).modal('show');
-	},
-	'click .js-edit'(event, instance) {
-		var modalname = '#editModal' + this._id
-		$(modalname).modal('show');
-	},
+		var uId = this._id;
+		$('#userId').val(uId);
+		$('#viewUser img').attr('src', userDB.findOne({_id: uId}).Image);
+		$('#viewUser #first').html(userDB.findOne({_id: uId}).FirstName);
+		$("#viewModal").modal('show');
+	},	
+});
 
+Template.viewUserProfile.events({
+	'click .js-edit'(event, instance) {
+		var uId = $('#viewUser #userId').val();
+		console.log("edit profile", uId);
+		$('#userId2').val(uId);
+		$('#editModal input[name= "FirstName"]').val(userDB.findOne({_id: uId}).FirstName);
+		$("#editModal").modal('show');
+	},
+});
+
+Template.editUserProfile.events({
+	'click .js-saveEdits'(){
+		// userDB.update({"FirstName":fname,"LastName":lname,"Image":img,"Like":0,"Dislike":0});
+		var uId = $('#userId2').val();
+		var fname = $('#editModal input[name= "FirstName"]').val();
+		userDB.update({_id: uId}, {set:{"FirstName":fname}});
+	}
 });
 
 Template.addProfile.events({

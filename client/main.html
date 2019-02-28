@@ -16,18 +16,20 @@
   <div class="row">
   {{> profile}}
 </div>
+{{>viewUserProfile}}
+{{>editUserProfile}}
 </div>
 </body>
 
 <template name="profile">
   {{#each profAll}}
-  <div id={{_id}}>
+  <div class="col-4" id={{_id}}>
   <div class="row justify-content-around">
     <div class="col-6">
-        <button class="btn btn-link js-info">
+        <a class="js-info">
           <img class= "profilepic" src="{{Image}}" alt="">
-        </button>
         {{FirstName}} {{LastName}}
+      </a>
     </div>
 
   </div>
@@ -40,45 +42,7 @@
       <button class="btn btn-danger">Dislike {{Dislike}}</button>
     </div>
   </div>  
-<div class="modal fade" id="editModal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary js-savebtn">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="viewModal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary js-savebtn">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 </div>
 {{/each}}
 </template>
@@ -127,6 +91,54 @@
     </div>
   </div>
 </div>
+</template>
 
+<template name="viewUserProfile"> 
+<!-- Modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>        
+      </div>
+      <div class="modal-body" id="viewUser">
+        <a class="js-edit"><i class="zmdi zmdi-edit zmdi-hc-lg"></i></a>
+        <input id="userId" type="hidden">
+        <img class="profilepic" src="" alt="">
+        <p id="first"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
 
+<template name="editUserProfile"> 
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="editUser">
+        <input id="userId2" type="text">
+         <input type="text" name="FirstName" aria-label="First Name" placeholder="" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-saveEdits">Save Edits</button>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
