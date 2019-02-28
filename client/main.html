@@ -13,41 +13,81 @@
      
   
   {{> addProfile}}
+  <div class="row">
   {{> profile}}
+</div>
 </div>
 </body>
 
 <template name="profile">
+  {{#each profAll}}
+  <div id={{_id}}>
   <div class="row justify-content-around">
     <div class="col-6">
-       <img src="garden.jpg.1200x800_q85_crop.jpg" alt="">
-       <h1>The Garden!</h1>
+        <button class="btn btn-link js-info">
+          <img class= "profilepic" src="{{Image}}" alt="">
+        </button>
+        {{FirstName}} {{LastName}}
     </div>
+
   </div>
 
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col">
-      <button class="btn btn-primary">Like</button>
+      <button class="btn btn-primary">Like {{Like}}</button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-light">or</button>
+      <button class="btn btn-danger">Dislike {{Dislike}}</button>
     </div>
-    <div class="col">
-      <button class="btn btn-danger">Dislike</button>
+  </div>  
+<div class="modal fade" id="editModal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-savebtn">Save changes</button>
+      </div>
     </div>
   </div>
-   
-   
- 
-  <p> {{counter2}} Like</p>
-  <p> {{counter1}} Dislikes</p>
+</div>
+
+<div class="modal fade" id="viewModal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary js-savebtn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+{{/each}}
 </template>
 
 
 <template name="addProfile">
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
+  Add a new user
 </button>
 
 <!-- Modal -->

@@ -4,6 +4,12 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 import '../lib/collection.js';
 
+Template.profile.helpers({
+	profAll(){
+		return userDB.find({});
+	}
+}) 
+
 Template.profile.events({
 	'click .js-like'(event, instance) {
 		console.log ("You clicked like");
@@ -11,6 +17,14 @@ Template.profile.events({
 	'click .js-dislike'(event, instance) {
 		console.log ("You clicked dislike");
 },
+	'click .js-info'(event, instance) {
+		var modalname = '#viewModal' + this._id
+		$(modalname).modal('show');
+	},
+	'click .js-edit'(event, instance) {
+		var modalname = '#editModal' + this._id
+		$(modalname).modal('show');
+	},
 
 });
 
@@ -29,6 +43,8 @@ Template.addProfile.events({
 
 
 		$('#exampleModal').modal('hide');
+		userDB.insert({"FirstName":fname,"LastName":lname,"Image":img,"Like":0,"Dislike":0});
+
 	}
 });
 
