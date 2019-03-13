@@ -12,10 +12,24 @@ Template.profile.helpers({
 
 Template.profile.events({
 	'click .js-like'(event, instance) {
-		console.log ("You clicked like");
+		var count = userDB.findOne({_id:this._id}).Like;
+		if (!count){
+			count = 0;
+		}
+ 		count=count + 1;
+ 		userDB.update({_id: this._id}, {$set:{"Like":count}});
+ 		console.log(count);
+
+
 },
-	'click .js-dislike'(event, instance) {
-		console.log ("You clicked dislike");
+	'click .js-Dislike'(event, instance) {
+		var count = userDB.findOne({_id:this._id}).Dislike;
+		if (!count){
+			count = 0;
+		}
+ 		count=count + 1;
+ 		userDB.update({_id: this._id}, {$set:{"Dislike":count}});
+ 		console.log(count);
 },
 	'click .js-info'(event, instance) {
 		var uId = this._id;

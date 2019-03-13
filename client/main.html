@@ -24,24 +24,24 @@
 <template name="profile">
   {{#each profAll}}
   <div class="col-4" id={{_id}}>
-  <div class="row justify-content-around">
-    <div class="col-6">
-        <a class="js-info">
-          <img class= "profilepic" src="{{Image}}" alt="">
-        {{FirstName}} {{LastName}}
-      </a>
+    <div class="row justify-content-around">
+      <div class="col-6">
+          <a class="js-info">
+            <img class= "profilepic" src="{{Image}}" alt="">
+          {{FirstName}} {{LastName}}
+        </a>
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col">
-      <button class="btn btn-primary">Like {{Like}}</button>
-    </div>
-    <div class="col">
-      <button class="btn btn-danger">Dislike {{Dislike}}</button>
-    </div>
-  </div>  
+    <div class="row justify-content-center">
+      <div class="col">
+        <button class="btn btn-primary js-like">Like {{Like}}</button>
+      </div>
+      <div class="col">
+        <button class="btn btn-danger js-Dislike">Dislike {{Dislike}}</button>
+      </div>
+    </div>  
 
 </div>
 {{/each}}
